@@ -111,3 +111,151 @@ Each script is built with `matplotlib` and takes structured `.csv` or `.txt` dat
 
 </details>
 
+
+# 📂 IMDb Genre Analysis Project (Hadoop MapReduce + SQL)
+
+An end-to-end data analysis project using **Hadoop MapReduce** and **Oracle SQL** on the **IMDb dataset** to extract genre trends and insights. This was developed as part of **CSE 4331/5331: Database Systems** at the University of Texas at Arlington (Spring 2025).
+
+---
+
+## ✅ Overview
+This project is divided into two core parts:
+
+- **Part 1**: Hadoop MapReduce – Analyze highly rated movies (rating ≥ 7.0) by genre combinations over time periods.
+- **Part 2**: Oracle SQL – Run equivalent analysis and deeper queries on IMDb data stored in an RDBMS.
+
+---
+
+## ▼ Part 1: Hadoop MapReduce (Local Single Node)
+
+### 1. Prerequisites
+- Ubuntu (WSL or Virtual Machine)
+- Java JDK 8 or 11
+- Hadoop 3.3.2: [Download link](https://archive.apache.org/dist/hadoop/common/hadoop-3.3.2/hadoop-3.3.2.tar.gz)
+- SSH installed and running (`sudo service ssh start`)
+
+### 2. Hadoop Setup (Single Node)
+
+```bash
+# Extract Hadoop and move into directory
+mkdir ~/hadoop_v1
+cd ~/hadoop_v1
+tar -xvzf hadoop-3.3.2.tar.gz
+cd hadoop-3.3.2
+```
+
+- Edit `core-site.xml`, `hdfs-site.xml`, and `mapred-site.xml` as per [this guide](https://hadoop.apache.org/docs/r3.3.2/hadoop-project-dist/hadoop-common/SingleCluster.html#Pseudo-Distributed_Operation)
+- Add DataNode and NameNode paths in `hdfs-site.xml`
+
+```xml
+<property>
+  <name>dfs.namenode.name.dir</name>
+  <value>file:/home/<username>/hadoop_data/namenode</value>
+</property>
+<property>
+  <name>dfs.datanode.data.dir</name>
+  <value>file:/home/<username>/hadoop_data/datanode</value>
+</property>
+```
+
+### 3. Format NameNode & Start Hadoop
+
+```bash
+bin/hdfs namenode -format
+sbin/start-dfs.sh
+sbin/start-yarn.sh
+jps  # Confirm services: NameNode, DataNode, ResourceManager, NodeManager
+```
+
+### 4. Load Dataset into HDFS
+
+```bash
+# Create input directory in HDFS
+bin/hdfs dfs -mkdir /imdbInput
+
+# Move .txt file from Windows to WSL
+cp /mnt/c/Users/<your_name>/Downloads/Spring2025-Project3-IMDbData.txt ~/ 
+
+# Upload to HDFS
+bin/hdfs dfs -put ~/Spring2025-Project3-IMDbData.txt /imdbInput
+```
+
+### 5. Compile and Run Custom MapReduce Job
+
+```bash
+nano MapReduce.java  # Paste the provided code with Mapper and Reducer
+
+mkdir -p classes
+javac -d classes -cp `bin/hadoop classpath` MapReduce.java
+jar cf genre.jar -C classes .
+```
+
+```bash
+# Run the job
+bin/hadoop jar genre.jar MapReduce /imdbInput /genreOutput
+```
+
+```bash
+# View the output
+bin/hdfs dfs -cat /genreOutput/part-r-00000
+```
+
+### 6. Download Output for Visualization
+
+```bash
+bin/hdfs dfs -get /genreOutput ~/genreOutput
+```
+
+Open `part-r-00000` with Excel/Google Sheets. Create bar or line charts to show genre trends.
+
+---
+
+## ▼ Part 2: Oracle SQL on Omega (UTA Server)
+
+### 1. Connect to Omega
+
+- Use PuTTY or Terminal with VPN (Ivanti Secure Client)
+- Connect with NetID and password
+
+```bash
+sqlplus yournetid@omega.uta.edu
+```
+
+### 2. Explore the Schema
+
+```sql
+SELECT * FROM cat;  -- Lists accessible tables
+DESC imdb00.title_basics;
+DESC imdb00.title_ratings;
+```
+
+### 3. Run the SQL Query (Task 2)
+
+Example:
+
+```sql
+SELECT tb.primarytitle, tr.averagerating
+FROM imdb00.title_basics tb
+JOIN imdb00.title_ratings tr ON tb.tconst = tr.tconst
+WHERE tb.genres LIKE '%Comedy%'
+  AND tb.genres LIKE '%Romance%'
+  AND tb.startyear BETWEEN 2011 AND 2020
+  AND tr.numvotes >= 150000
+ORDER BY tr.averagerating DESC
+FETCH FIRST 5 ROWS ONLY;
+```
+
+### 4. View the Query Plan
+
+```sql
+EXPLAIN PLAN FOR
+<your_query_here>;
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+```
+
+This will help you understand how Oracle executed the query:
+- Full table scans vs. index usage
+- Join strategies (hash, nested loop)
+- Cost estimates and sorting
+
+---
