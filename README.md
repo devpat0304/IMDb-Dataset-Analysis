@@ -401,3 +401,48 @@ This section showcases the graphs generated from both the **MapReduce output** a
 </details>
 
 
+## 🧠 Learning Objectives
+
+This project was created to solidify understanding of core principles in **database systems**, **distributed computing**, and **data visualization**. It provided hands-on experience with real-world datasets and end-to-end data workflows. The following were the major academic and technical learning goals achieved:
+
+---
+
+### 🔹 Distributed Data Processing with Hadoop MapReduce
+- Implemented a custom Java-based MapReduce application to process the IMDb dataset, filtering and aggregating data based on genres, ratings, and time periods.
+- Understood the role of Mappers and Reducers in the Hadoop ecosystem.
+- Executed the program in a pseudo-distributed mode on a local Hadoop installation.
+- Configured `core-site.xml`, `hdfs-site.xml`, and `mapred-site.xml` to simulate a multi-node behavior within a single machine environment.
+
+---
+
+### 🔹 SQL Query Design and Optimization (Oracle)
+- Constructed multi-join queries across normalized IMDb schema tables (`title_basics`, `title_ratings`, `title_principals`, `name_basics`).
+- Filtered data with complex WHERE conditions (e.g., genre matching, vote thresholds, actor roles).
+- Applied `EXPLAIN PLAN` and `DBMS_XPLAN.DISPLAY()` to inspect execution paths and cost.
+- Gained practical insight into how Oracle handles hash joins, nested loops, and full table scans.
+
+---
+
+### 🔹 ETL and Schema Interpretation
+- Transformed raw text-based data into structured key-value outputs using Hadoop.
+- Interpreted and leveraged schema constraints (e.g., foreign keys) in SQL to extract meaningful relationships.
+- Understood the trade-offs between denormalization and query complexity when joining multiple large tables.
+
+---
+
+### 🔹 Data Visualization using Python
+- Created 3 distinct Python scripts using `matplotlib` to visualize results:
+  - `plot1.py`: Genre trend comparison across decades (MapReduce output)
+  - `plot2.py`: Top movie results (SQL query output)
+  - `plot3.py`: Line chart of genre evolution over time
+- Translated CSV/text output into readable, color-coded bar charts and line graphs.
+- Emphasized storytelling through data by using intuitive labels, legends, and axes.
+
+---
+
+### 🔹 Collaborative Development and Documentation
+- Worked in a multi-phase environment with designated tasks and reports (Part 1, Part 2, Final Deliverable).
+- Created reusable, modular code with clearly separated logic.
+- Documented the full workflow including setup, execution, result interpretation, and technical rationale in a final report and README format.
+
+---
