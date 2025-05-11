@@ -353,4 +353,51 @@ Predicate Information:
 12 - access("p"."nconst"="n"."nconst")
 ```
 
+## 📈 Visualizations
+
+This section showcases the graphs generated from both the **MapReduce output** and the **SQL results** using Python’s `matplotlib`. Each script contributes to transforming raw analytical results into visual insights.
+
+<details>
+  <summary><strong>📁 plot1.py – Bar Chart by Genre Combo & Decade</strong></summary>
+
+- **Data Source:** Output from MapReduce job (`part-r-00000`)
+- **Purpose:** Displays grouped bar chart comparing highly rated movies (rating ≥ 7.0) across genre combinations and decades.
+- **Genres:** 
+  - Action + Thriller
+  - Adventure + Drama
+  - Comedy + Romance
+- **Decades Tracked:** 
+  - 1991–2000
+  - 2001–2010
+  - 2011–2020
+- **Visualization Tool:** `matplotlib`
+- **Insight:** Highlights genre trends over three decades.
+
+</details>
+
+<details>
+  <summary><strong>📁 plot2.py – SQL-Based Top Genres</strong></summary>
+
+- **Data Source:** Oracle SQL query result from `IMDbDataExtractionSQL.sql`
+- **Purpose:** Generates bar graph displaying top-rated Action/Thriller films (2011–2020) with average rating.
+- **Criteria:**
+  - ≥150,000 votes
+  - IMDb rating ≥ 7.0
+  - Lead actor/actress is ordering = 1
+- **Visualization Tool:** `matplotlib`
+- **Insight:** Validates SQL query result with clear visual ranking.
+
+</details>
+
+<details>
+  <summary><strong>📁 plot3.py – Genre Rating Trend (Line Chart)</strong></summary>
+
+- **Data Source:** Processed output from MapReduce job
+- **Purpose:** Plots average IMDb rating trends over time for each genre combination.
+- **Style:** Multi-line chart segmented by decade
+- **Visualization Tool:** `matplotlib`
+- **Insight:** Reveals rise and fall in popularity and quality perception over time.
+
+</details>
+
 
