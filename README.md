@@ -112,10 +112,6 @@ Each script is built with `matplotlib` and takes structured `.csv` or `.txt` dat
 </details>
 
 
-# 📂 Ho
-
-An end-to-end data analysis project using **Hadoop MapReduce** and **Oracle SQL** on the **IMDb dataset** to extract genre trends and insights. This was developed as part of **CSE 4331/5331: Database Systems** at the University of Texas at Arlington (Spring 2025).
-
 ---
 
 ## 📦 How to Run
