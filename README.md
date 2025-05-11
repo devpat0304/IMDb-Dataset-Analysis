@@ -112,19 +112,15 @@ Each script is built with `matplotlib` and takes structured `.csv` or `.txt` dat
 </details>
 
 
-# 📂 IMDb Genre Analysis Project (Hadoop MapReduce + SQL)
+# 📂 Ho
 
 An end-to-end data analysis project using **Hadoop MapReduce** and **Oracle SQL** on the **IMDb dataset** to extract genre trends and insights. This was developed as part of **CSE 4331/5331: Database Systems** at the University of Texas at Arlington (Spring 2025).
 
 ---
 
-## ✅ Overview
-This project is divided into two core parts:
+## 📦 How to Run
 
-- **Part 1**: Hadoop MapReduce – Analyze highly rated movies (rating ≥ 7.0) by genre combinations over time periods.
-- **Part 2**: Oracle SQL – Run equivalent analysis and deeper queries on IMDb data stored in an RDBMS.
-
----
+Follow these steps to run the project components:
 
 ## ▼ Part 1: Hadoop MapReduce (Local Single Node)
 
