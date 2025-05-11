@@ -54,5 +54,62 @@ We wrote an optimized SQL query on the IMDb Oracle database hosted on Omega to r
   - **Full Table Scan** on `title_ratings`
   - **Hash Joins** and **Nested Loops**
   - **Window Sorting (RANK)** to select the top 5 efficiently
+ 
+## 📁 Project File Descriptions
+
+This section provides a detailed breakdown of the files used in the IMDb Data Analysis project. Each file contributes to either data processing, querying, or visualization.
+
+<details>
+  <summary><strong>🧩 MapReduce Component</strong></summary>
+
+- `MapReduce.java`  
+  This is the core Hadoop MapReduce program written in Java. It processes the raw IMDb input files to:
+  - Filter movies with a rating ≥ 7.0
+  - Segment them into decade ranges (1991–2000, 2001–2010, 2011–2020)
+  - Group them by genre combinations
+  - Output the count and average rating per genre combination
+
+  Designed to be compiled using Hadoop tools and executed in a pseudo-distributed mode environment.
+</details>
+
+<details>
+  <summary><strong>🧠 SQL Component</strong></summary>
+
+- `IMDbDataExtractionSQL.sql`  
+  Contains the SQL query used to extract and filter top-rated movies from the Oracle-hosted IMDb schema. Features:
+  - Use of `GROUP BY`, `HAVING`, `ORDER BY`, and `JOIN` operations
+  - Aggregation logic to compute average ratings
+  - Integration with Oracle `EXPLAIN PLAN` for performance diagnostics
+
+</details>
+
+<details>
+  <summary><strong>📊 Python Visualization Scripts</strong></summary>
+
+- `plot1.py`  
+  Generates a grouped bar chart to compare average ratings of genre combinations across decades. Reads in MapReduce output.
+
+- `plot2.py`  
+  Produces a bar graph representing SQL query results, typically for the most highly rated genre(s) overall.
+
+- `plot3.py`  
+  Displays a line chart that traces the average rating trend of selected genre combinations over three decades.
+
+Each script is built with `matplotlib` and takes structured `.csv` or `.txt` data as input.
+</details>
+
+<details>
+  <summary><strong>📄 Final Report</strong></summary>
+
+- `Final Report.pdf`  
+  A comprehensive write-up that outlines:
+  - The design and structure of the MapReduce program
+  - SQL query construction and explanation
+  - Sample output screenshots
+  - Execution analysis (including Oracle query plans)
+  - Reflection on performance and tradeoffs
+
+</details>
+
 
 
