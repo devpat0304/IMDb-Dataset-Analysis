@@ -7,28 +7,52 @@ Quickly evolving media platforms generate vast volumes of content data — from 
 
 > _"What genre combinations have historically produced the highest-rated films across the last three decades?"_
 
-The project was completed in two major parts:
+## 🧠 How It Works (MapReduce + SQL Breakdown)
 
-- **🗃️ Part 1: Hadoop MapReduce**
-  - A custom Java program processes raw IMDb data to filter **highly rated films (rating ≥ 7.0)**.
-  - It segments and aggregates genre-based combinations across **three decades**:  
-    **1991–2000**, **2001–2010**, **2011–2020**.
-  - Output data is grouped and written as intermediate results.
+This project consists of two core data processing stages:
 
-- **🧠 Part 2: SQL Query Optimization**
-  - An optimized SQL query runs on an **Oracle database** hosting IMDb schema tables.
-  - Using **nested queries**, **grouping**, and `EXPLAIN PLAN`, we identify the **top-rated movies** matching selected genre combinations.
-  - Results are refined, analyzed, and compared using **execution plans and cost metrics**.
+### 🗂️ Part 1 – Hadoop MapReduce (Java)
 
-- **📈 Final Phase: Data Visualization**
-  - Python scripts using **matplotlib** transform both MapReduce and SQL outputs into clear, comparative **bar charts** and **line graphs**.
-  - These visualizations illustrate rating trends and genre performance over time.
+The custom `MapReduce.java` program filters and counts movies from a large IMDb dataset based on:
 
-The project reflects core software engineering competencies including:
-- Building and compiling Hadoop-compatible Java code
-- Writing multi-step SQL queries and analyzing performance
-- Structuring complex ETL pipelines across technologies
-- Presenting results in professional data story formats
+- **Genres**: Only considers movies with both genres from these combinations:
+  - `Action` + `Thriller`
+  - `Adventure` + `Drama`
+  - `Comedy` + `Romance`
+- **Rating**: Must have an average IMDb rating ≥ 7.0  
+- **Release Year**: Bucketed by decade:
+  - `[1991–2000]`
+  - `[2001–2010]`
+  - `[2011–2020]`
+
+#### 📌 Map Phase
+- Parses each line of the IMDb dataset.
+- Filters out entries that don’t meet the above criteria.
+- Emits key-value pairs:  
+  **Key** → `[Decade],GenreCombo` (e.g., `[2001–2010],Comedy;Romance`)  
+  **Value** → `1`
+
+#### 📌 Reduce Phase
+- Aggregates values for each unique key.
+- Final output: Count of highly rated movies per genre combo per decade.
 
 ---
+
+### 💾 Part 2 – SQL Query & Oracle EXPLAIN PLAN
+
+We wrote an optimized SQL query on the IMDb Oracle database hosted on Omega to retrieve:
+
+- 🎬 The **top 5 Action/Thriller movies** from 2011–2020
+- With:
+  - ≥150,000 votes
+  - Rating ≥ 7.0
+  - Lead actor/actress (ordering = 1)
+
+#### 🧠 Query Plan Analysis
+- We used `EXPLAIN PLAN` and `DBMS_XPLAN.DISPLAY()` to understand the optimizer’s execution flow.
+- Oracle used:
+  - **Full Table Scan** on `title_ratings`
+  - **Hash Joins** and **Nested Loops**
+  - **Window Sorting (RANK)** to select the top 5 efficiently
+
 
