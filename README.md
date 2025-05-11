@@ -1,4 +1,5 @@
 # 🎬 IMDb Data Analysis – MapReduce + SQL Optimization
+ <img src="readme-logo-image.png" alt="IMDb Project Banner" width="300"/>
 
 An **integrated data analytics and engineering project** combining **Apache Hadoop MapReduce**, **Oracle SQL**, and **Python-based visualization** to extract meaningful insights from the **IMDb movie dataset**. This project was developed in **Spring 2025** as part of **CSE 4331/5331: Database Systems Models and Implementation** at **The University of Texas at Arlington** 🎓.
 
