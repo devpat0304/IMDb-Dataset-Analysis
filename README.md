@@ -446,3 +446,43 @@ This project was created to solidify understanding of core principles in **datab
 - Documented the full workflow including setup, execution, result interpretation, and technical rationale in a final report and README format.
 
 ---
+
+## 🚀 Future Enhancements
+
+While this project successfully combined Hadoop MapReduce, SQL optimization, and data visualization to analyze IMDb trends, there are several areas where future development could expand its functionality and impact:
+
+- 📦 **Integrate a Persistent NoSQL Store (e.g., HBase or MongoDB)**  
+  Store MapReduce results persistently for easier querying, historical comparisons, or UI integration.
+
+- 🌐 **Enable Real-Time Genre Analysis with Streaming Tools**  
+  Incorporate Apache Kafka and Spark Streaming for continuous ingestion and analysis of newly released movies or ratings.
+
+- 📊 **Add a Web-Based Dashboard**  
+  Build a lightweight web application (using Flask/Django or React) to visualize results interactively instead of static Python plots.
+
+- 🔍 **Enhance SQL Query Recommendations**  
+  Apply cost-based optimization hints and include automated recommendations based on `EXPLAIN PLAN` results.
+
+- 🗃️ **Expand Genre Combinations Dynamically**  
+  Rather than hardcoding 3 genre pairs, dynamically select the top N combinations from the data for deeper insight.
+
+- 🧠 **Leverage Machine Learning for Genre Prediction**  
+  Use clustering/classification models to predict genre success or recommend optimal release periods.
+
+- 🧾 **Export Visual Reports**  
+  Automatically generate PDF/Markdown reports with charts, summaries, and query plans using Python automation.
+
+---
+
+## 🙏 Thank You
+
+Thank you for taking the time to explore our **IMDb Data Analysis** project!
+
+This project represents a collaborative academic effort to bridge distributed computing and relational databases, while enhancing analytical thinking and data storytelling skills.
+
+We hope you found this project informative, technically inspiring, and a useful case study in cross-platform data engineering.
+
+Feel free to ⭐ star, fork, or contribute — and keep exploring the intersection of media, data, and scalable systems! 🎬📊🧠
+
+
+
