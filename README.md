@@ -114,6 +114,33 @@ Each script is built with `matplotlib` and takes structured `.csv` or `.txt` dat
 
 ---
 
+## 🧰 Technologies & Tools Used
+
+### 💻 Languages
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
+### 🧪 Tools & Frameworks
+![Apache Hadoop](https://img.shields.io/badge/Apache%20Hadoop-66CCFF?style=for-the-badge&logo=apachehadoop&logoColor=black)
+![Oracle Database](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
+
+### 🗃️ Data Storage & Query
+- Oracle-hosted IMDb schema on Omega server (UTA)
+- Text files for HDFS input/output in Hadoop
+- CSV output for visualization
+
+### 📚 Libraries
+![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
+
+### 🧠 Methodologies
+![Agile](https://img.shields.io/badge/Agile-%2300BFA5.svg?style=for-the-badge&logo=agile&logoColor=white)
+![Scrum](https://img.shields.io/badge/Scrum-%235C4EE5.svg?style=for-the-badge&logo=scrumalliance&logoColor=white)
+
+---
+
 ## 📦 How to Run
 
 Follow these steps to run the project components:
